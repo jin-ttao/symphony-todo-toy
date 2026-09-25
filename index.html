@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tiny Todos</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 32rem;
+        margin: 4rem auto;
+        padding: 0 1rem;
+        color: #172554;
+      }
+
+      form {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      input,
+      button {
+        border-radius: 0.5rem;
+        font: inherit;
+        padding: 0.75rem 1rem;
+      }
+
+      input {
+        border: 1px solid #cbd5e1;
+        flex: 1;
+      }
+
+      button {
+        background: #2563eb;
+        border: 0;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tiny Todos</h1>
+    <form id="todo-form">
+      <input id="todo-input" aria-label="New todo" placeholder="Buy carrots" required />
+      <button type="submit">Add task</button>
+    </form>
+    <ul id="todo-list"></ul>
+
+    <script>
+      const form = document.querySelector("#todo-form");
+      const input = document.querySelector("#todo-input");
+      const list = document.querySelector("#todo-list");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const item = document.createElement("li");
+        item.textContent = input.value;
+        list.append(item);
+        form.reset();
+        input.focus();
+      });
+    </script>
+  </body>
+</html>
